@@ -39,14 +39,14 @@ public interface Printable {
             //No puedo crear un objeto de la interfaz porque no tiene cuerpo de constructor y no se ejectuará nada
             //Se puede crear un objeto Impresora con la interfaz Printable porque la clase Impresora le aporta el el cuerpo
 
-            Printable p=new Impresora();
+            Printable p= (Printable) new Impresora();
 
             //Para implementar un lambda. Solo se implementan en interfaces funcionales, que solamente tienen un único método abstracto
             //Nombre del objeto    (elementos que recibe el método) flecha paréntesis y devuelve lo que quieres imprimir
             Printable p2= (x,x1) -> {
                 return "";
             };
-            /**Si se devuelve en la misma linea se podría escribir asi y solo tiene un parámetro
+            /** Si se devuelve en la misma linea se podría escribir asi y solo tiene un parámetro
             Printable p3= y -> "";
              **/
 
@@ -155,7 +155,7 @@ public interface Printable {
 
             Libreria Altabix =new Libreria("Altabix","Altabix");
             Libro elPlanetaTesoro=new Libro("El planeta del tesoro", "Not found", 1603);
-            Libro elPrincipito=new Libro("elPrincipito", "Rafa", 605);
+            Libro elPrincipito=new Libro("elPrincipito", "Rafa", 8);
             Libro DiarioAnneFrank=new Libro("DiarioAnneFrank", "Test", 235);
             Altabix.addLibro(elPrincipito);
             Altabix.addLibro(elPlanetaTesoro);
@@ -163,13 +163,23 @@ public interface Printable {
 
             List<Libreria>libreriasELCHE=Arrays.asList(carrus,Altabix);
 
-            //contar el numero total de libros totales de las librerias
             /**
-             * De todos los libros con menos de 10
+             * Contar el numero total de libros totales de las librerias
+             */
+            long cantidadLibros= libreriasELCHE.stream()
+                    .flatMap(listaLibros->listaLibros.getLibros().stream())
+                    .count();
+            System.out.println(cantidadLibros);
+
+            /**
+             * De todos los libros con menos de 10 pag, actualizarlos y ponerlos a 0
+             *Recoger en una lista con solo el nombre de esos libros con 0 hojas
              */
 
-
-
+            libreriasELCHE.stream().flatMap(listaLibros->listaLibros.getLibros().stream())
+                    .filter(libro -> libro.getNumPag()<10)
+                    .peek(libro -> libro.setNumPag(0))
+                    .forEach(libro-> System.out.println(libro.getISBN()+" "+libro.getNumPag()));
 
 
 

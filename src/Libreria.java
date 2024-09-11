@@ -22,6 +22,9 @@ class Libro{
         return autoor;
     }
 
+    public void setNumPag(int numPag) {
+        this.numPag = numPag;
+    }
 
     public int getNumPag() {
         return numPag;
