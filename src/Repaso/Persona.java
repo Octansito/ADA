@@ -1,3 +1,5 @@
+package Repaso;
+
 public class Persona {
     private String nombre;
     //Ojo vale lo mismo para todos los objetos persona. Todos los objetos comparten esta variable aunque se creen 50 personas

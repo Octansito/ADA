@@ -1,3 +1,5 @@
+package Repaso;
+
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.function.Function;
@@ -32,12 +34,12 @@ public interface Printable {
 
 
     /**
-     * Mirar primero la clase Impresora
+     * Mirar primero la clase Repaso.Impresora
      */
     class TestPrintable{
         public static void main(String[] args) {
             //No puedo crear un objeto de la interfaz porque no tiene cuerpo de constructor y no se ejectuará nada
-            //Se puede crear un objeto Impresora con la interfaz Printable porque la clase Impresora le aporta el el cuerpo
+            //Se puede crear un objeto Repaso.Impresora con la interfaz Repaso.Printable porque la clase Repaso.Impresora le aporta el el cuerpo
 
             Printable p= (Printable) new Impresora();
 
@@ -47,7 +49,7 @@ public interface Printable {
                 return "";
             };
             /** Si se devuelve en la misma linea se podría escribir asi y solo tiene un parámetro
-            Printable p3= y -> "";
+            Repaso.Printable p3= y -> "";
              **/
 
             Predicate<Integer> pre= x -> x==0;

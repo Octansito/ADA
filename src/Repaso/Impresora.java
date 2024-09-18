@@ -1,4 +1,6 @@
-public class Impresora implements Printable{
+package Repaso;
+
+public class Impresora implements Printable {
 
     @Override
     public String print(int data, String data2) {
